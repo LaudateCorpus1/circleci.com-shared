@@ -1,0 +1,93 @@
+$subnav-padding-spacing: 16px 20px;
+
+.component.subnav {
+  border-bottom: $border-width solid $gray;
+  z-index: $z-index-subnav;
+  background: $white;
+  list-style: none;
+  width: 100%;
+
+  li {
+    display: inline-block;
+    margin: 0 $spacing-large-horizontal;
+    padding: $spacing-small-vertical 0;
+    border-bottom: $border-width-widest solid transparent;
+
+    &.active {
+      border-bottom-color: $text-color-header;
+    }
+
+    a {
+      text-decoration: none;
+      color: $text-color-header;
+    }
+
+    @media screen and (max-width: $screen-md-max) {
+      margin: 0 $spacing-medium-horizontal;
+    }
+  }
+
+  .container-fluid {
+    ul {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: $subnav-height;
+      margin: 0 10px;
+      padding: 0;
+      line-height: 1.2;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    width: 100%;
+  }
+
+  &.js-fixed {
+    position: fixed;
+    width: 100%;
+    top: $nav-offset;
+  }
+
+  &.main-nav-offset {
+    top: $nav-offset;
+
+    @media screen and (min-width: $screen-md-min) {
+      .nav {
+        margin-left: 110px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+#subnav-placeholder {
+  @media screen and (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+// nav hiding support
+.component.subnav.js-fixed  {
+  transition: top $transition-duration-medium ease;
+}
+body.nav-hide .component.subnav.js-fixed {
+  top: 0;
+}
