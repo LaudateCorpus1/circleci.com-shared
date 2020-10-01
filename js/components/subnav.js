@@ -19,7 +19,7 @@ function getArrayFrom (query) {
 };
 
 function removeClasses (list, lClass) {
-  list.forEach(function (item) { 
+  list.forEach(function (item) {
     item.classList.remove(lClass);
   });
 };
@@ -33,7 +33,7 @@ function setActiveAnchor (index, elementArray) {
 };
 
 (function () {
-  window.addEventListener('scroll', function () { 
+  window.addEventListener('scroll', function () {
     setActiveAnchor(getActiveAnchor(getAnchorPositions(getArrayFrom('.anchor'))), getArrayFrom('[data-subnav-item]'))
   });
 
