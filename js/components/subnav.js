@@ -40,6 +40,7 @@ function refreshActiveState() {
 
 (function () {
   window.addEventListener('scroll', refreshActiveState);
+  window.addEventListener('shown.subnav', refreshActiveState);
 
   window.addEventListener('load', function () {
     refreshActiveState();
@@ -64,6 +65,7 @@ function refreshActiveState() {
       };
       jumpNav();
       window.addEventListener('scroll', jumpNav);
+      window.addEventListener('shown.subnav', jumpNav);
     }
 
     if (subnav) {
