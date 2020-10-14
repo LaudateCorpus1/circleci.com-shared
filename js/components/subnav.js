@@ -32,13 +32,17 @@ function setActiveAnchor (index, elementArray) {
   }
 };
 
+function refreshActiveState() {
+  var activeAnchorIndex = getActiveAnchor(getAnchorPositions(getArrayFrom('.anchor')));
+  var anchorElements = getArrayFrom('[data-subnav-item]')
+  setActiveAnchor(activeAnchorIndex, anchorElements);
+};
+
 (function () {
-  window.addEventListener('scroll', function () {
-    setActiveAnchor(getActiveAnchor(getAnchorPositions(getArrayFrom('.anchor'))), getArrayFrom('[data-subnav-item]'))
-  });
+  window.addEventListener('scroll', refreshActiveState);
 
   window.addEventListener('load', function () {
-    setActiveAnchor(getActiveAnchor(getAnchorPositions(getArrayFrom('.anchor'))), getArrayFrom('[data-subnav-item]'));
+    refreshActiveState();
 
     var subnav = document.querySelector('.component.subnav');
     var topNavOffsetParam = subnav.getAttribute('data-top-nav-offset');
