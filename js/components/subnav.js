@@ -44,8 +44,10 @@ function refreshActiveState() {
 
   window.addEventListener('load', function () {
     refreshActiveState();
+    getArrayFrom('.component.subnav').map(setUpSubnav);
+  });
 
-    var subnav = document.querySelector('.component.subnav');
+  var setUpSubnav = function (subnav) {
     var topNavOffsetParam = subnav.getAttribute('data-top-nav-offset');
     var topNavOffset = topNavOffsetParam ? parseInt(topNavOffsetParam, 10) : 70;
 
@@ -53,7 +55,7 @@ function refreshActiveState() {
     if (subnav && subnav.classList.contains('dynamic-fixed')) {
 
       var jumpNav = function () {
-        var placeholder = document.getElementById('subnav-placeholder');
+        var placeholder = subnav.parentNode.classList.contains('subnav-placeholder') && subnav.parentNode
 
         placeholder.style.height = subnav.clientHeight + 'px';
 
@@ -75,5 +77,5 @@ function refreshActiveState() {
         }
       });
     }
-  });
+  };
 }());
