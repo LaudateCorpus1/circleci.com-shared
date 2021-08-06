@@ -1,5 +1,3 @@
-$subnav-padding-spacing: 16px 20px;
-
 .component.subnav {
   border-bottom: $border-width solid $gray;
   z-index: $z-index-subnav;
@@ -7,11 +5,29 @@ $subnav-padding-spacing: 16px 20px;
   list-style: none;
   width: 100%;
 
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
   li {
-    display: inline-block;
-    margin: 0 $spacing-large-horizontal;
-    padding: $spacing-small-vertical 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: $subnav-height;
+    margin: 0 10px;
+    padding: 18px 0;
+    line-height: 1.2;
     border-bottom: $border-width-widest solid transparent;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     &.active {
       border-bottom-color: $text-color-header;
@@ -20,35 +36,6 @@ $subnav-padding-spacing: 16px 20px;
     a {
       text-decoration: none;
       color: $text-color-header;
-    }
-
-    @media screen and (max-width: $screen-md-max) {
-      margin: 0 $spacing-medium-horizontal;
-    }
-  }
-
-  .container-fluid {
-    ul {
-      display: flex;
-      justify-content: space-around;
-    }
-
-    li {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: $subnav-height;
-      margin: 0 10px;
-      padding: 0;
-      line-height: 1.2;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
     }
   }
 
@@ -61,16 +48,6 @@ $subnav-padding-spacing: 16px 20px;
     position: fixed;
     width: 100%;
     top: $nav-offset;
-  }
-
-  &.main-nav-offset {
-    top: $nav-offset;
-
-    @media screen and (min-width: $screen-md-min) {
-      .nav {
-        margin-left: 110px;
-      }
-    }
   }
 
   @media screen and (max-width: $screen-xs-max) {
